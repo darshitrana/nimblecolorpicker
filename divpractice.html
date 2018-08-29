@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>divpractice</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+            position: absolute;
+        }
+
+        #main {
+            height: 100%;
+            width:100%;
+            border: 1px solid black;
+            display: inline-block;
+            background: red;
+        }
+
+        ul {
+            height: 100%;
+            width: 100%;
+        }
+
+        .test {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li id="main">
+
+    </li>
+
+</ul>
+
+
+<script>
+    $(document).ready(function () {
+
+        var div1 = $("#main");
+        var swatcher= $('ul li:not(#main)');
+        var w = $(window).width();
+        div1.click(function () {
+            // alert("dsad");
+            div1.after("<li class='test' id='selected-1' style='border:1px solid black;display: inline-block;position: relative'><h1>hello</h1></li>");
+
+
+            var a = $('ul li:not(#main)').length;
+
+            console.log(a);
+            console.log(w);
+
+            var slicesize = Math.floor(w / (a + 2));
+            console.log(slicesize);
+
+            $('ul li:not(#main)').each(function (l,el) {
+                // alert($(this).text());
+                $(this).css("width",slicesize);
+                // el.css("width","345px");
+            })
+
+        });
+    });
+</script>
+
+
+</body>
+</html>
